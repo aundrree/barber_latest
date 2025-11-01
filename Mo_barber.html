@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baber Küche -- Haarschnitt</title>
+  <meta name="description" content="Haarschnitt in gemütlicher Küchen-Atmosphäre in Köln Zündorf. Immer geöffnet nach Vereinbarung." />
+  <link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet">
+  <style>
+    :root {  
+      --accent: #d97706;
+      --bg: #fff;
+      --muted: #6b7280;
+      --card: #f8fafc;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: linear-gradient(180deg, #fff 0%, #f7f7f9 100%); color: #0f172a; }
+    header { background: linear-gradient(90deg, rgba(217,119,6,.06), rgba(99,102,241,.03)); padding: 28px 16px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .logo { width: 56px; height: 56px; border-radius: 12px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem; }
+    h1 { margin: 0; font-size: 1.8rem; }
+    p.lead { color: var(--muted); margin: 8px 0 0; }
+    
+    /* Full-width hero */
+    .hero-wrapper { 
+      position: relative; 
+      width: 100vw; 
+      margin-left: calc(-50vw + 50%); /* Centers it without container limits */
+      background-image: url("mo3.jpg"); 
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat; 
+      color: white; 
+      padding: 60px 16px; 
+    }
+    .hero-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+      z-index: 0;
+    }
+    .hero { 
+      position: relative; 
+      z-index: 1; 
+      display: flex; 
+      gap: 24px; 
+      align-items: center; 
+      flex-wrap: wrap; 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 0 16px; 
+    }
+    .hero h2, .hero p, .hero .btn { color: white; }
+    .hero .left { flex: 1; min-width: 280px; }
+    .hero .right { width: 320px; min-width: 260px; }
+    
+    .cta { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 10px 16px; border-radius: 12px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn:hover { transform: translateY(-2px); opacity: .95; }
+    .btn.secondary { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+    
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 22px; }
+    .card {
+      background: linear-gradient(145deg, #fdfdfd, #f0f4f8); padding: 16px; border-radius: 16px; box-shadow: 0 6px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px rgba(0,0,0,0.15); }
+    
+    .services { margin: 18px 0; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .gallery img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover { transform: scale(1.05); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    
+    .prices table { width: 100%; border-collapse: separate; border-spacing: 0 10px; margin-top: 10px; }
+    .prices th { text-align: left; font-weight: 600; color: var(--accent); padding-bottom: 8px; }
+    .prices td { background: var(--card); padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    
+    form { display: grid; gap: 10px; }
+    label { display: block; }
+    input, textarea, select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
+    
+    footer { padding: 20px 0; color: var(--muted); }
+    .icon { margin-right: 6px; vertical-align: middle; }
+    @media (min-width: 900px) { h1 { font-size: 2.2rem; } .hero { padding: 36px 0; } }
+    .meineleistungen { color: white; }
+    .privacy-note { font-size: 0.8rem; color: var(--muted); margin-top: 5px; }
+
+    /* Dark Mode Styles */
+    .dark-mode { 
+      background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%); 
+      color: #f0f0f0; 
+    }
+    .dark-mode header { 
+      background: linear-gradient(90deg, rgba(217,119,6,.1), rgba(99,102,241,.1)); 
+    }
+    .dark-mode .card { 
+      background: linear-gradient(145deg, #333, #444); 
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3); 
+    }
+    .dark-mode .prices td { 
+      background: #333; 
+    }
+    .dark-mode p.lead, .dark-mode .privacy-note { 
+      color: #ccc; 
+    }
+    .dark-mode input, .dark-mode textarea, .dark-mode select { 
+      background: #444; 
+      color: #fff; 
+      border: 1px solid #666; 
+    }
+    .dark-mode .btn.secondary { 
+      color: #d97706; 
+      border-color: #d97706; 
+    }
+    .dark-mode footer { 
+      color: #ccc; 
+    }
+    .dark-mode .services .card strong, .dark-mode .services .card p {
+      color: #f0f0f0; /* Ensure text visibility in dark mode */
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* Services card text colors */
+    .services .card strong, .services .card p {
+      color: #0f172a; /* Dark text for light mode visibility */
+    }
+
+    /* Access Gate Styles */
+    #accessGate {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      color: white;
+      text-align: center;
+      transition: opacity 0.5s ease;
+    }
+    #accessGate h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    #accessGate input {
+      padding: 10px;
+      width: 200px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    #accessGate button {
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #accessGate p.hint {
+      font-size: 0.8rem;
+      color: #ccc;
+      margin-top: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Access Gate Overlay -->
+  <div id="accessGate">
+    <h2>Exklusiver Zugang</h2>
+    <p>Geben Sie den Code ein, um fortzufahren.</p>
+    <input type="password" id="accessCode" placeholder="Code eingeben">
+    <button id="submitCode">Eintreten</button>
+    <p class="hint">(Hinweis: Der Code ist "küche123" – teilen Sie ihn mit Ihren Kunden!)</p>
+  </div>
+
+  <header class="hidden">
+    <div class="container">
+      <div class="brand">
+        <div class="logo">✂️</div>
+        <div>
+          <h1>Baber in der Küche</h1>
+          <p class="lead">Haarschnitt in Köln Zündorf · Immer geöffnet mit Vereinbarung</p>
+        </div>
+        <button id="darkModeToggle" style="background:none;border:none;font-size:1.5rem;cursor:pointer;margin-left:auto;">🌙</button>
+      </div>
+    </div>
+  </header>    
+  
+  <div class="hero-wrapper hidden">
+    <div class="hero">
+      <div class="left">
+        <h2>Willkommen bei Baber Küche!</h2>
+        <p class="lead">Haare schneiden in gemütlicher Atmosphäre in Köln Zündorf. Ob Herren, Kinder oder Bart -- hier bist du richtig. Kurz warten, Kaffee trinken, Haare schneiden. Einfach und unkompliziert.</p>
+        <div class="cta">
+          <a class="btn" href="#booking">Termin vereinbaren</a>
+          <a class="btn secondary" href="#preise">Preise ansehen</a>
+          <a class="btn" href="https://wa.me/491781044227" target="_blank">WhatsApp</a>
+        </div>
+        <div class="services">
+          <h3 class="meineleistungen">Meine Leistungen</h3>
+          <div class="card-grid">
+            <div class="card">
+              <strong>Herren Haarschnitt</strong>
+              <p class="lead">Trocken- oder Nassschnitt, Bartpflege optional.</p>
+            </div>
+            <div class="card">
+              <strong>Kinder</strong>
+              <p class="lead">Schnelle und kinderfreundliche Schnitte.</p>
+            </div>
+            <div class="card">
+              <strong>Bart trimmen</strong>
+              <p class="lead">Präzise Pflege und Styling.</p>
+            </div>
+            <div class="card">
+              <strong>Färben / Spezial</strong>
+              <p class="lead">Individuelle Anfragen willkommen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="card">
+          <strong>Kontakt</strong>
+          <p style="margin:6px 0"> <a href="tel:+491781044227">0178 1044227</a></p>
+          <p style="margin:6px 0"> <a href="mailto:drevinaundre@gmail.com">drevinaundre@gmail.com</a></p>
+          <p style="margin:6px 0"> Köln Zündorf</p>
+          <p style="margin:6px 0"> Immer geöffnet nach Vereinbarung</p>
+          <a class="btn" href="#booking">Jetzt Termin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <main class="container hidden">
+    <section id="galerie" style="margin-top:22px">
+      <h3>Galerie</h3>
+      <p class="lead">Hier ein paar Beispielbilder:</p>
+      <div class="gallery">
+        <img src="Mo1.jpg" alt="Haarschnitt vorne">
+        <img src="Mo2.jpg" alt="Haarschnitt seitlich">
+        <img src="Mo4.jpg" alt="Haarschnitt hinten">
+      </div>
+    </section>
+
+    <section id="preise" class="prices" style="margin-top:18px">
+      <h3>Preise</h3>
+      <table>
+        <thead>
+          <tr><th>Leistung</th><th>Preis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Herrenhaarschnitt</td><td>Angebot: 0€</td></tr>
+          <tr><td>Kinder (u.12)</td><td>Angebot: 0€</td></tr>
+          <tr><td>Bart trimmen</td><td>Angebot: 0€</td></tr>
+          <tr><td>Färben / Spezial</td><td>Angebot: 0€</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="booking" style="margin-top:18px">
+      <h3>Termin vereinbaren</h3>
+      <p class="lead">Füllen Sie das Formular aus – ich melde mich per Telefon oder WhatsApp zur Bestätigung. Alternativ direkt per WhatsApp oder Anruf kontaktieren.</p>
+      <form action="https://formsubmit.co/drevinaundre@gmail.com" method="POST">
+        <!-- Spam protection: Honeypot (bots fill this, hidden from users) -->
+        <input type="text" name="_honey" style="display:none">
+        <!-- Re-enable captcha for basic spam protection -->
+        <!-- Remove _captcha=false to show a simple checkbox captcha -->
+        
+        <!-- Custom thank-you redirect (create a thanks.html or use a URL) -->
+        <input type="hidden" name="_next" value="https://your-site.com/thanks.html"> <!-- Replace with your thank-you page URL -->
+        
+        <!-- Auto-subject for your email -->
+        <input type="hidden" name="_subject" value="Neue Termin-Anfrage von der Website">
+        
+        <label>Vor- und Nachname <input type="text" name="name" required placeholder="Max Mustermann"></label>
+        <label>Telefon <input type="tel" name="telefon" required placeholder="+49 15..."></label>
+        <label>Nachricht (optional) <textarea name="nachricht" rows="3" placeholder="z.B. Zusätzliche Wünsche"></textarea></label>
+        <label>Wunschtermin <input type="datetime-local" name="wunschtermin"></label>
+        <label>Leistung 
+          <select name="leistung">
+            <option>Herrenhaarschnitt</option>
+            <option>Kinder</option>
+            <option>Bart trimmen</option>
+            <option>Anderes / Anfrage</option>
+          </select>
+        </label>
+        <p class="privacy-note">Ihre Daten werden nur für den Termin verwendet und nicht gespeichert (DSGVO-konform). Sie erhalten eine Bestätigung per Telefon.</p>
+        <button class="btn" type="submit">Absenden</button>
+      </form>
+    </section>
+
+    <section style="margin-top:22px">
+      <h3>Standort</h3>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.4013531472443!2d7.0389!3d50.8723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf2ac3c!2sK%C3%B6ln%20Z%C3%BCndorf!5e0!3m2!1sde!2sde!4v1700000000000" 
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </section>
+
+    <section style="margin-top:22px">
+      <h3>FAQ</h3>
+      <div class="card-grid">
+        <div class="card"><strong>Ist das hygienisch?</strong><p class="lead">Ja -- alle Werkzeuge werden desinfiziert und Handtücher gewaschen.</p></div>
+        <div class="card"><strong>Wie lange dauert ein Schnitt?</strong><p class="lead">Ca. 20–40 Minuten, je nach Aufwand.</p></div>
+        <div class="card"><strong>Kann ich bar zahlen?</strong><p class="lead">Ja, Barzahlung und Überweisung sind möglich.</p></div>
+      </div>
+    </section>
+  </main>    
+  
+  <footer class="hidden">
+    <div class="container">
+      <p>&copy; 2025 Baber Küche · Köln Zündorf. Impressum & Datenschutz nach Bedarf hinzufügen.</p>
+      <p style="font-size:0.9rem; color:#6b7280; margin-top:6px;">
+        ⚠️ Hinweis: Der Haarschnitt erfolgt auf eigene Gefahr. Für eventuelle Schäden oder Unzufriedenheit übernehmen wir keine Haftung.
+      </p>
+    </div>
+  </footer>
+  
+  <!-- WhatsApp Floating Button (will appear after unlock) -->
+  <a href="https://wa.me/491781044227?text=Hallo!%20Ich%20möchte%20einen%20Termin%20vereinbaren." class="whatsapp-float hidden" target="_blank">
+    💬
+  </a>
+  
+  <!-- Lucide icons init (if you want to replace emojis later) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  
+  <!-- Client-side phone validation -->
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      const phone = document.querySelector('input[name="telefon"]').value.trim();
+      // Basic intl phone regex (10-15 digits, optional +)
+      if (!/^\+?\d{10,15}$/.test(phone)) {
+        alert('Bitte geben Sie eine gültige Telefonnummer ein (z.B. +491781044227).');
+        e.preventDefault();
+      }
+    });
+  </script>
+
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    // Check for saved preference or default to light
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      if (toggle) toggle.textContent = '☀️';
+    }
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          toggle.textContent = '☀️';
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          toggle.textContent = '🌙';
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+    }
+  </script>
+
+  <!-- Access Gate Script -->
+  <script>
+    const correctCode = 'küche123'; // Change this to your desired code
+    const gate = document.getElementById('accessGate');
+    const codeInput = document.getElementById('accessCode');
+    const submitBtn = document.getElementById('submitCode');
+
+    // Check if already accessed (via localStorage)
+    if (localStorage.getItem('siteAccessed') === 'true') {
+      gate.style.display = 'none';
+      document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'));
+    }
+
+    submitBtn.addEventListener('click', () => {
+      if (codeInput.value.trim() === correctCode) {
+        localStorage.setItem('siteAccessed', 'true');
+        gate.style.opacity = '0';
+        setTimeout(() => {
+          gate.style.display = 'none';
+          document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'));
+        }, 500); // Match transition time
+      } else {
+        alert('Falscher Code! Versuchen Sie es erneut.');
+        codeInput.value = '';
+      }
+    });
+
+    // Optional: Allow Enter key
+    codeInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') submitBtn.click();
+    });
+  </script>
+</body>
+</html>
